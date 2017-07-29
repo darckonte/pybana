@@ -3,8 +3,12 @@ import plotly.graph_objs as plobs
 
 
 def create_bar_graph(data, labels):
-    plot_div = ploff.plot({
-        'data': [
-            plobs.Bar(x=labels, y=data)]},
-        output_type='div', show_link=False)
-    return plot_div
+    plotdata = [plobs.Bar(x=labels, y=data)]
+
+    layout = plobs.Layout(
+        autosize=True
+    )
+
+    fig = plobs.Figure(data=plotdata, layout=layout)
+    myplot = ploff.plot(fig, output_type="div")
+    return myplot
